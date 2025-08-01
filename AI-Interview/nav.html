@@ -1,0 +1,301 @@
+<!-- nav.html -->
+<style>
+    /* Navigation Styles */
+    .container-body-x {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+  
+    .container-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    .left-logo img {
+      height: 35px;
+      transition: transform 0.3s ease;
+    }
+  
+    .left-logo img:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+  
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      z-index: 1101;
+      background: transparent;
+      padding: 8px;
+      border-radius: 8px;
+    }
+  
+    .bar {
+      height: 4px;
+      width: 24px;
+      background-color: #0071bc;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+  
+    .menu-toggle.open .bar:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+  
+    .menu-toggle.open .bar:nth-child(2) {
+      opacity: 0;
+    }
+  
+    .menu-toggle.open .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+  
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      width: 100%;
+      justify-content: flex-end;
+    }
+  
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      font-family: rajdhani, sans-serif;
+    }
+  
+    .nav-links li a {
+      text-decoration: none;
+      color: #0f0c29;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+  
+    .nav-links li a:hover {
+      /* color: #00f2fe; */
+      color: #0071bc;
+    } 
+  
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      /* background-color: #00f2fe; */
+      background-color: #0071bc;
+      transition: width 0.3s ease;
+    }
+  
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+  
+    .button-login {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      font-family: rajdhani, sans-serif;
+      margin-left: 3%;
+    }
+  
+    .header-button {
+      background: linear-gradient(90deg, #6e48aa, #9d50bb);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: rajdhani, sans-serif;
+      box-shadow: 0 4px 15px rgba(110, 72, 170, 0.4);
+    }
+  
+    .header-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(110, 72, 170, 0.6);
+      background: linear-gradient(90deg, #9d50bb, #4776e6);
+    }
+  
+    .user-info {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: navy;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  
+ 
+    @media (max-width: 768px) {
+      .container-body-x {
+        padding: 6px 8px;
+      }
+      .container-header {
+        position: relative;
+        align-items: center;
+        padding: 6px 8px;
+      }
+      .menu-toggle {
+        display: flex;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(15, 12, 41, 0.95), rgba(48, 43, 99, 0.95));
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 80px 20px 20px;
+        transition: right 0.3s ease-in-out;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+      }
+      .nav-menu.open {
+        right: 0;
+      }
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        gap: 1.5rem;
+        font-family: rajdhani,sans-serif;
+      }
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+      }
+      .nav-links li a {
+        padding: 12px;
+        width: 100%;
+        color: #f8f9ff;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+      .nav-links li a:hover {
+        color: var(--neon);
+      }
+      .nav-links li a::after {
+        background-color: var(--neon);
+      }
+      .button-login {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .header-button, .button-book {
+        width: 100%;
+        padding: 12px;
+        text-align: center;
+        font-size: 1rem;
+        font-family: rajdhani,sans-serif;
+      }
+      .user-info {
+        color: #f8f9ff;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    @media (min-width: 1440px) {
+      .container-header {
+        padding: 8px 15px;
+      }
+    }
+  </style>
+  
+  <nav class="container-body-x">
+    <header class="container-header">
+      <div class="left-logo">
+        <a href="/">
+          <img src="{{ url_for('static', filename='images/Sklassicslogo.webp') }}" alt="Logo" />
+        </a>
+      </div>
+  
+      <div class="menu-toggle" id="menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+  
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('blog') }}">Blog</a></li>
+          <li><a href="{{ url_for('bookdemo') }}">Book a Demo</a></li>
+        </ul>
+  
+        <div class="button-login">
+          {% if session.get('user') %}
+            <button class="header-button" onclick="window.location.href='{{ url_for('dashboard') }}'">Dashboard</button>
+            <button class="header-button" onclick="window.location.href='{{ url_for('logout') }}'">Logout</button>
+          {% else %}
+            <button class="header-button" onclick="window.location.href={{ url_for('login') }}">Login</button>
+          {% endif %}
+        </div>
+      </div>
+    </header>
+  </nav>
+  
+  <script>
+      
+      // Removed redundant fetch since nav.html is included via Jinja template
+
+        
+   
+  
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("nav-menu");
+  
+      toggle.addEventListener("click", () => {
+        toggle.classList.toggle("open");
+        menu.classList.toggle("open");
+        
+        // Toggle body overflow when menu is open
+        if (menu.classList.contains("open")) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "";
+        }
+      });
+
+      // Close menu when clicking on a link (for mobile)
+      const navLinks = document.querySelectorAll('.nav-links a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+            toggle.classList.remove("open");
+            menu.classList.remove("open");
+            document.body.style.overflow = "";
+          }
+        });
+      });
+    });
+  </script>

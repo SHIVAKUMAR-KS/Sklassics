@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Platform - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css" />
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #1a202c; /* Matches navbar bg-gray-800 to avoid white flash */
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #ffffff;
+        }
+        header {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.prod.website-files.com/66bc0319fce51f7e5568a809/67ad5c98ebe02fb5864dabae_ai-research-interview-guide.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed; /* Parallax effect */
+            z-index: -1;
+        }
+        .colorful-card {
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .colorful-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .section-transition {
+            transition: all 0.5s ease-in-out;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        @keyframes fadeInDelay {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in-delay {
+            animation: fadeInDelay 0.8s ease-out forwards;
+        }
+        @keyframes rotateIn {
+            from { transform: rotate(-10deg) translateY(20px); opacity: 0; }
+            to { transform: rotate(0deg) translateY(0); opacity: 1; }
+        }
+        .animate-rotate-in {
+            animation: rotateIn 0.8s ease-out forwards;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.9) translateY(20px); opacity: 0; }
+            50% { transform: scale(1.05) translateY(-5px); opacity: 0.5; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        .animate-bounce-in {
+            animation: bounceIn 0.8s ease-out forwards;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin 2s infinite linear;
+        }
+        @keyframes wave {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+        .animate-wave {
+            animation: wave 3s infinite;
+        }
+        .glassmorphic {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .decorative-dots {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+        }
+        .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .dot.yellow {
+            background-color: #ffd700;
+        }
+        .dot.blue {
+            background-color: #1e90ff;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #ffd700, #1e90ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        .floating-call {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1e90ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        .floating-call:hover {
+            transform: scale(1.1);
+        }
+        .typewriter {
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            font-size: 1.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            border-right: 2px solid #fff;
+            animation: typing 4s steps(44) 1s forwards, blink 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 22.5em; } /* Adjusted to approximate text width; fine-tune if needed */
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+        @keyframes slideUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-up {
+            animation: slideUp 1s ease-in-out forwards;
+        }
+        @keyframes scaleUp {
+            0% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        .animate-scale-up {
+            animation: scaleUp 0.3s ease-in-out forwards;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .pulse {
+            animation: pulse 1s ease-in-out infinite;
+        }
+        /* Responsive Adjustments */
+        @media (max-width: 640px) {
+            .container { padding: 10px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1rem; }
+            .grid-cols-3 { grid-template-columns: 1fr; }
+            .grid-cols-2 { grid-template-columns: 1fr; }
+            .grid-cols-4 { grid-template-columns: 1fr; }
+            .grid-cols-5 { grid-template-columns: 1fr; }
+            .max-w-md { max-width: 100%; }
+            nav { padding: 10px; }
+            #mobile-menu { padding: 10px; }
+            .py-32 { padding-top: 20px; padding-bottom: 20px; }
+            .px-8 { padding-left: 15px; padding-right: 15px; }
+            .py-4 { padding-top: 10px; padding-bottom: 10px; }
+            header::before { background-size: cover; height: 100vh; }
+            .gradient-text { font-size: 1.5rem; }
+            .floating-call { bottom: 10px; right: 10px; font-size: 1rem; padding: 8px 15px; }
+            .typewriter { font-size: 1.2rem; width: 18em; } /* Adjusted for smaller screens */
+        }
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .container { padding: 15px; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.2rem; }
+            .grid-cols-3 { grid-template-columns: 1fr 1fr; }
+            .grid-cols-4 { grid-template-columns: 1fr 1fr; }
+            .grid-cols-5 { grid-template-columns: 1fr 1fr; }
+            .max-w-md { max-width: 80%; }
+            nav { padding: 15px; }
+            #mobile-menu { padding: 15px; }
+            .py-32 { padding-top: 30px; padding-bottom: 30px; }
+            .px-8 { padding-left: 20px; padding-right: 20px; }
+            header::before { background-size: cover; height: 100vh; }
+            .gradient-text { font-size: 1.8rem; }
+            .floating-call { bottom: 15px; right: 15px; }
+            .typewriter { font-size: 1.4rem; width: 20em; } /* Adjusted for medium screens */
+        }
+        @media (min-width: 1025px) {
+            .container { padding: 20px; }
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.5rem; }
+            h3 { font-size: 1.5rem; }
+            .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+            .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+            .grid-cols-5 { grid-template-columns: repeat(5, 1fr); }
+            .max-w-md { max-width: 600px; }
+            nav { padding: 20px; }
+            #mobile-menu { padding: 20px; }
+            .py-32 { padding-top: 32px; padding-bottom: 32px; }
+            .px-8 { padding-left: 32px; padding-right: 32px; }
+            header::before { background-size: cover; height: 100vh; }
+            .typewriter { width: full; } /* Matches text width for desktop */
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Global Navigation Bar -->
+    <nav class="bg-gray-800 max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center sticky top-0 z-50 animate-slide-up" style="animation-delay: 0.1s; width: 100%;">
+        <h1 class="text-3xl font-bold animate-rotate-in" style="animation-delay: 0.2s;">AI Platform 🌐🤖</h1>
+        <div class="hidden md:flex space-x-6">
+            <a href="#" class="hover:text-gray-300 transition animate-fade-in-delay" style="animation-delay: 0.3s;">Home</a>
+            <a href="#" class="hover:text-gray-300 transition animate-fade-in-delay" style="animation-delay: 0.4s;">Features</a>
+            <a href="#" class="hover:text-gray-300 transition animate-fade-in-delay" style="animation-delay: 0.5s;">Demo</a>
+            <a href="#" class="hover:text-gray-300 transition animate-fade-in-delay" style="animation-delay: 0.6s;">Login</a>
+        </div>
+        <button id="hamburger" class="md:hidden focus:outline-none animate-pulse" style="animation-delay: 0.7s;">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800 w-full">
+        <div class="flex flex-col space-y-2 px-4 py-2">
+            <a href="#" class="text-white hover:text-gray-300 transition animate-fade-in-delay" style="animation-delay: 0.8s;">Home</a>
+            <a href="#" class="text-white hover:text-gray-300 transition animate-fade-in-delay" style="animation-delay: 0.9s;">Features</a>
+            <a href="#" class="text-white hover:text-gray-300 transition animate-fade-in-delay" style="animation-delay: 1.0s;">Demo</a>
+            <a href="#" class="text-white hover:text-gray-300 transition animate-fade-in-delay" style="animation-delay: 1.1s;">Login</a>
+        </div>
+    </div>
+
+    <!-- Header / Hero Section -->
+    <header class="bg-transparent animate-slide-up" style="animation-delay: 0.2s;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center relative z-10">
+            <h2 class="text-5xl font-bold mb-8 animate-rotate-in" style="animation-delay: 0.3s;">Empower Your Future with AI</h2>
+            <div class="flex flex-col items-center">
+                <p class="typewriter mb-1 sm:mb-6 bg-gradient-to-r from-[#A000D8] via-[#FF1493] to-[#FF0000] bg-clip-text text-transparent animate-fade-in" style="animation-delay: 1s;">
+                    Revolutionize your workflow with cutting-edge AI technology.
+                </p>
+                <a href="#" class="inline-block bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 pulse animate-scale-up" style="animation-delay: 0.7s; margin-top: 1rem;">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Why Choose InterviewPro AI Section -->
+    <section class="bg-gray-900 py-12 animate-slide-up" style="animation-delay: 0.4s;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-8 text-white animate-rotate-in" style="animation-delay: 0.5s;">Why Choose InterviewPro AI?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="colorful-card bg-gradient-to-r from-purple-500 to-blue-500 p-6 rounded-lg text-white transition-all duration-300 animate-bounce-in" style="animation-delay: 0.6s;" data-aos="fade-up">
+                    <h3 class="text-3xl font-bold">10×</h3>
+                    <p class="mt-2">More Candidates Interviewed</p>
+                </div>
+                <div class="colorful-card bg-gradient-to-r from-green-400 to-blue-500 p-6 rounded-lg text-white transition-all duration-300 animate-bounce-in" style="animation-delay: 0.8s;" data-aos="fade-up">
+                    <h3 class="text-3xl font-bold">Auto‑Pilot</h3>
+                    <p class="mt-2">Interviews Streamlined</p>
+                </div>
+                <div class="colorful-card bg-gradient-to-r from-red-400 to-yellow-500 p-6 rounded-lg text-white transition-all duration-300 animate-bounce-in" style="animation-delay: 1.0s;" data-aos="fade-up">
+                    <h3 class="text-3xl font-bold">Instant</h3>
+                    <p class="mt-2">Feedback, Zero Hassles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-900 py-12 animate-slide-up" style="animation-delay: 0.6s;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-8 animate-rotate-in" style="animation-delay: 0.7s;" data-aos="fade-up">Our Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="colorful-card bg-gradient-to-r from-purple-500 to-blue-500 p-6 rounded-lg text-white transition-all duration-300 animate-bounce-in" style="animation-delay: 0.8s;" data-aos="fade-up">
+    <div class="flex justify-center mb-8">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzmImanLm15uwllJi5f3BuISK9uGXxFrQzYQ&s" alt="Feature Icon" class="w-full h-full">
+    </div>
+    <h3 class="text-xl font-semibold mb-2">AI-Powered Insights</h3>
+    <p>Get actionable insights powered by advanced AI algorithms.</p>
+</div>
+<div class="colorful-card bg-gradient-to-r from-green-400 to-blue-500 p-6 rounded-lg text-white transition-all duration-300 animate-bounce-in" style="animation-delay: 1.0s;" data-aos="fade-up">
+    <div class="flex justify-center mb-4">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzmImanLm15uwllJi5f3BuISK9uGXxFrQzYQ&s" alt="Feature Icon" class="w-full h-full">
+    </div>
+    <h3 class="text-xl font-semibold mb-2">Real-Time Analytics</h3>
+    <p>Monitor your data in real-time for better decision-making.</p>
+</div>
+<div class="colorful-card bg-gradient-to-r from-red-400 to-yellow-500 p-6 rounded-lg text-white transition-all duration-300 animate-bounce-in" style="animation-delay: 1.2s;" data-aos="fade-up">
+    <div class="flex justify-center mb-4">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzmImanLm15uwllJi5f3BuISK9uGXxFrQzYQ&s" alt="Feature Icon" class="w-full h-full">
+    </div>
+    <h3 class="text-xl font-semibold mb-2">Seamless Integration</h3>
+    <p>Easily integrate with your existing tools and platforms.</p>
+</div>
+                <div class="colorful-card bg-gradient-to-r from-blue-500 to-purple-500 p-6 rounded-lg text-white transition-all duration-300 animate-bounce-in" style="animation-delay: 1.4s;" data-aos="fade-up">
+                    <div class="flex justify-center mb-4">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzmImanLm15uwllJi5f3BuISK9uGXxFrQzYQ&s" alt="Feature Icon" class="w-full h-full">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">User-Friendly Interface</h3>
+                    <p>Navigate easily with our intuitive design.</p>
+                </div>
+                <div class="colorful-card bg-gradient-to-r from-yellow-500 to-red-500 p-6 rounded-lg text-white transition-all duration-300 animate-bounce-in" style="animation-delay: 1.6s;" data-aos="fade-up">
+                    <div class="flex justify-center mb-4">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzmImanLm15uwllJi5f3BuISK9uGXxFrQzYQ&s" alt="Feature Icon" class="w-full h-full">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+                    <p>Get assistance anytime with our dedicated support team.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="bg-gray-800 py-12 animate-slide-up" style="animation-delay: 0.8s;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-8 animate-rotate-in" style="animation-delay: 0.9s;" data-aos="fade-up">How It Works</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glassmorphic p-6 rounded-lg card text-center transition-all duration-300 hover:scale-105 animate-bounce-in" style="animation-delay: 1.0s;" data-aos="fade-up">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4rWzK5tbeXjeN8rP5U2NA4PpNnQWMRVbGUQ&s" alt="Step 1 Icon" class="mx-auto mb-4 animate-spin-slow">
+                    <h3 class="text-lg font-semibold mb-2">Step 1</h3>
+                    <p class="text-gray-300">Define your goals and objectives.</p>
+                </div>
+                <div class="glassmorphic p-6 rounded-lg card text-center transition-all duration-300 hover:scale-105 animate-bounce-in" style="animation-delay: 1.2s;" data-aos="fade-up">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4rWzK5tbeXjeN8rP5U2NA4PpNnQWMRVbGUQ&s" alt="Step 2 Icon" class="mx-auto mb-4 animate-spin-slow">
+                    <h3 class="text-lg font-semibold mb-2">Step 2</h3>
+                    <p class="text-gray-300">Integrate with your data sources.</p>
+                </div>
+                <div class="glassmorphic p-6 rounded-lg card text-center transition-all duration-300 hover:scale-105 animate-bounce-in" style="animation-delay: 1.4s;" data-aos="fade-up">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4rWzK5tbeXjeN8rP5U2NA4PpNnQWMRVbGUQ&s" alt="Step 3 Icon" class="mx-auto mb-4 animate-spin-slow">
+                    <h3 class="text-lg font-semibold mb-2">Step 3</h3>
+                    <p class="text-gray-300">Analyze and visualize your data.</p>
+                </div>
+                <div class="glassmorphic p-6 rounded-lg card text-center transition-all duration-300 hover:scale-105 animate-bounce-in" style="animation-delay: 1.6s;" data-aos="fade-up">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4rWzK5tbeXjeN8rP5U2NA4PpNnQWMRVbGUQ&s" alt="Step 4 Icon" class="mx-auto mb-4 animate-spin-slow">
+                    <h3 class="text-lg font-semibold mb-2">Step 4</h3>
+                    <p class="text-gray-300">Make informed decisions with AI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-gradient-to-r from-blue-500 to-purple-500 py-12 animate-slide-up" style="animation-delay: 1.2s;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-8 text-white animate-rotate-in" style="animation-delay: 1.3s;" data-aos="fade-up">Frequently Asked Questions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="colorful-card bg-white bg-opacity-10 p-4 rounded-lg transition-all duration-300 animate-bounce-in" style="animation-delay: 1.4s;" data-aos="fade-up">
+                    <details>
+                        <summary class="font-semibold cursor-pointer text-white">How does AI Platform work?</summary>
+                        <p class="text-gray-300 mt-2">Our platform uses advanced algorithms to analyze data and provide insights.</p>
+                    </details>
+                </div>
+                <div class="colorful-card bg-white bg-opacity-10 p-4 rounded-lg transition-all duration-300 animate-bounce-in" style="animation-delay: 1.6s;" data-aos="fade-up">
+                    <details>
+                        <summary class="font-semibold cursor-pointer text-white">Can I customize my dashboard?</summary>
+                        <p class="text-gray-300 mt-2">Yes, you can customize your dashboard to fit your needs.</p>
+                    </details>
+                </div>
+                <div class="colorful-card bg-white bg-opacity-10 p-4 rounded-lg transition-all duration-300 animate-bounce-in" style="animation-delay: 1.8s;" data-aos="fade-up">
+                    <details>
+                        <summary class="font-semibold cursor-pointer text-white">Is my data secure?</summary>
+                        <p class="text-gray-300 mt-2">We prioritize data security and use encryption to protect your information.</p>
+                    </details>
+                </div>
+                <div class="colorful-card bg-white bg-opacity-10 p-4 rounded-lg transition-all duration-300 animate-bounce-in" style="animation-delay: 2.0s;" data-aos="fade-up">
+                    <details>
+                        <summary class="font-semibold cursor-pointer text-white">What support do you offer?</summary>
+                        <p class="text-gray-300 mt-2">We offer 24/7 customer support to assist you with any inquiries.</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Section: Screen & Assess -->
+    <section class="bg-gradient-to-r from-green-500 to-teal-500 py-20 animate-slide-up" style="animation-delay: 1.4s;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-5xl font-bold mb-4 text-white animate-rotate-in" style="animation-delay: 1.5s;" data-aos="fade-up">Screen & Assess with Precision</h2>
+            <h3 class="text-3xl font-semibold mb-6 text-white animate-fade-in-delay" style="animation-delay: 1.6s;" data-aos="fade-up">Begin Your Digital Talent Journey</h3>
+            <p class="text-lg mb-8 text-gray-200 animate-fade-in-delay" style="animation-delay: 1.7s;" data-aos="fade-up">Leverage AI-driven interviews and skill assessments for faster, more confident hiring and training.</p>
+            <a href="#" class="inline-block bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-blue-700 transition pulse animate-scale-up" style="animation-delay: 1.8s;" data-aos="fade-up">Book a demo</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-12 animate-slide-up" style="animation-delay: 1.6s; position: relative;">
+        <div class="decorative-dots">
+            <div class="dot yellow"></div>
+            <div class="dot blue"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="footer-heading text-center mb-8">
+                <span class="gradient-text">Where talent meets<br />opportunity</span>
+            </div>
+            <div class="footer-container grid grid-cols-1 md:grid-cols-2 gap-8">
+                <section class="footer-section animate-fade-in-delay" style="animation-delay: 1.7s;">
+                    <h3 class="text-lg font-semibold mb-4">OUR DOMAINS</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://sklassics.com/" class="hover:text-gray-300 transition">sklassics.com</a></li>
+                        <li><a href="https://sklassicstech.com/" class="hover:text-gray-300 transition">sklassicstech.com</a></li>
+                        <li><a href="https://share.google/KZ3l5sjewn4aQ2eUk" class="hover:text-gray-300 transition">sklassicsacademy.com</a></li>
+                        <li><a href="https://sklassicsacademy.com/lms" class="hover:text-gray-300 transition">sklassics-lms.com</a></li>
+                        <li><a href="https://sklassics-ai.com/" class="hover:text-gray-300 transition">sklassics-ai.com</a></li>
+                        <li><a href="https://sklassicstutor.com/" class="hover:text-gray-300 transition">sklassicstutor.com</a></li>
+                        <li><a href="https://sklassics-ai.com/" class="hover:text-gray-300 transition">sklassics-quiz.com</a></li>
+                        <li><a href="https://www.hanumancars.com/" class="hover:text-gray-300 transition">hanumancars.com</a></li>
+                        <li><a href="https://vlrws.com/" class="hover:text-gray-300 transition">vlrws.com</a></li>
+                    </ul>
+                </section>
+                <section class="footer-section animate-fade-in-delay" style="animation-delay: 1.8s;">
+                    <h3 class="text-lg font-semibold mb-4">OUR SERVICES</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://share.google/KZ3l5sjewn4aQ2eUk" class="hover:text-gray-300 transition">IT Training & Placement Programs</a></li>
+                        <li><a href="https://sklassicstech.com/" class="hover:text-gray-300 transition">Professional IT Services</a></li>
+                        <li><a href="https://www.hanumancars.com/" class="hover:text-gray-300 transition">Travel Application Services</a></li>
+                        <li><a href="https://vlrws.com/" class="hover:text-gray-300 transition">Real Estate Platform Solutions</a></li>
+                        <li><a href="https://sklassicstutor.com/" class="hover:text-gray-300 transition">Online & offline Tutoring</a></li>
+                    </ul>
+                </section>
+            </div>
+            <div class="footer-bottom mt-8 flex flex-col md:flex-row justify-between items-center animate-fade-in-delay" style="animation-delay: 1.9s;">
+                <div class="footer-links mb-4 md:mb-0">
+                    <span>© 2025 Sklassics Technologies</span>
+                    <span class="ml-4">Privacy Policy</span>
+                </div>
+                <div class="web-credit">
+                    <span>Web Design by Sklassics</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Floating Call Button -->
+    <div class="floating-call">+91 9392732341</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Toggle mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

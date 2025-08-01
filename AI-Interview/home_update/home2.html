@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Platform - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a); /* Background for the body */
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .colorful-card {
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .colorful-card:hover {
+            transform: translateY(-5px);
+        }
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .section-transition {
+            transition: all 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Hero Section -->
+    <header class="bg-transparent">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold">AI Platform</h1>
+            <div class="hidden md:flex space-x-4">
+                <a href="#" class="hover:text-gray-300 transition">Home</a>
+                <a href="#" class="hover:text-gray-300 transition">Features</a>
+                <a href="#" class="hover:text-gray-300 transition">Demo</a>
+                <a href="#" class="hover:text-gray-300 transition">Login</a>
+            </div>
+            <button id="hamburger" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="flex flex-col space-y-2 px-4 py-2 bg-gray-800">
+                <a href="#" class="text-white hover:text-gray-300 transition">Home</a>
+                <a href="#" class="text-white hover:text-gray-300 transition">Features</a>
+                <a href="#" class="text-white hover:text-gray-300 transition">Demo</a>
+                <a href="#" class="text-white hover:text-gray-300 transition">Login</a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
+            <h2 class="text-5xl font-bold mb-4">Empower Your Future with AI</h2>
+            <p class="text-lg mb-8">Revolutionize your workflow with cutting-edge AI technology.</p>
+            <a href="#" class="inline-block bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-blue-700 transition pulse">Get Started</a>
+            <div class="mt-8">
+                <img src="https://via.placeholder.com/600x400?text=AI+Illustration" alt="AI Illustration" class="mx-auto rounded-lg w-full max-w-md">
+            </div>
+        </div>
+    </header>
+
+    <!-- Why Choose InterviewPro AI Section -->
+    <section class="bg-gray-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-8 text-white">Why Choose InterviewPro AI?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="colorful-card bg-gradient-to-r from-purple-500 to-blue-500 p-6 rounded-lg text-white transition-all duration-300">
+                    <h3 class="text-3xl font-bold">10×</h3>
+                    <p class="mt-2">More Candidates Interviewed</p>
+                </div>
+                <div class="colorful-card bg-gradient-to-r from-green-400 to-blue-500 p-6 rounded-lg text-white transition-all duration-300">
+                    <h3 class="text-3xl font-bold">Auto‑Pilot</h3>
+                    <p class="mt-2">Interviews Streamlined</p>
+                </div>
+                <div class="colorful-card bg-gradient-to-r from-red-400 to-yellow-500 p-6 rounded-lg text-white transition-all duration-300">
+                    <h3 class="text-3xl font-bold">Instant</h3>
+                    <p class="mt-2">Feedback, Zero Hassles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-8" data-aos="fade-up">Our Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="colorful-card bg-gradient-to-r from-purple-500 to-blue-500 p-6 rounded-lg text-white transition-all duration-300" data-aos="fade-up">
+                    <img src="https://via.placeholder.com/50?text=Icon" alt="Feature Icon" class="mb-4">
+                    <h3 class="text-xl font-semibold mb-2">AI-Powered Insights</h3>
+                    <p>Get actionable insights powered by advanced AI algorithms.</p>
+                </div>
+                <div class="colorful-card bg-gradient-to-r from-green-400 to-blue-500 p-6 rounded-lg text-white transition-all duration-300" data-aos="fade-up">
+                    <img src="https://via.placeholder.com/50?text=Icon" alt="Feature Icon" class="mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Real-Time Analytics</h3>
+                    <p>Monitor your data in real-time for better decision-making.</p>
+                </div>
+                <div class="colorful-card bg-gradient-to-r from-red-400 to-yellow-500 p-6 rounded-lg text-white transition-all duration-300" data-aos="fade-up">
+                    <img src="https://via.placeholder.com/50?text=Icon" alt="Feature Icon" class="mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Seamless Integration</h3>
+                    <p>Easily integrate with your existing tools and platforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="bg-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-8" data-aos="fade-up">How It Works</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glassmorphic p-6 rounded-lg card text-center transition-all duration-300 hover:scale-105" data-aos="fade-up">
+                    <img src="https://via.placeholder.com/50?text=Step+1" alt="Step 1 Icon" class="mx-auto mb-4">
+                    <h3 class="text-lg font-semibold mb-2">Step 1</h3>
+                    <p class="text-gray-300">Define your goals and objectives.</p>
+                </div>
+                <div class="glassmorphic p-6 rounded-lg card text-center transition-all duration-300 hover:scale-105" data-aos="fade-up">
+                    <img src="https://via.placeholder.com/50?text=Step+2" alt="Step 2 Icon" class="mx-auto mb-4">
+                    <h3 class="text-lg font-semibold mb-2">Step 2</h3>
+                    <p class="text-gray-300">Integrate with your data sources.</p>
+                </div>
+                <div class="glassmorphic p-6 rounded-lg card text-center transition-all duration-300 hover:scale-105" data-aos="fade-up">
+                    <img src="https://via.placeholder.com/50?text=Step+3" alt="Step 3 Icon" class="mx-auto mb-4">
+                    <h3 class="text-lg font-semibold mb-2">Step 3</h3>
+                    <p class="text-gray-300">Analyze and visualize your data.</p>
+                </div>
+                <div class="glassmorphic p-6 rounded-lg card text-center transition-all duration-300 hover:scale-105" data-aos="fade-up">
+                    <img src="https://via.placeholder.com/50?text=Step+4" alt="Step 4 Icon" class="mx-auto mb-4">
+                    <h3 class="text-lg font-semibold mb-2">Step 4</h3>
+                    <p class="text-gray-300">Make informed decisions with AI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose InterviewPro AI Section -->
+    <section class="bg-gradient-to-r from-blue-500 to-purple-500 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-8 text-white" data-aos="fade-up">Frequently Asked Questions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="colorful-card bg-white bg-opacity-10 p-4 rounded-lg transition-all duration-300" data-aos="fade-up">
+                    <details>
+                        <summary class="font-semibold cursor-pointer text-white">How does AI Platform work?</summary>
+                        <p class="text-gray-300 mt-2">Our platform uses advanced algorithms to analyze data and provide insights.</p>
+                    </details>
+                </div>
+                <div class="colorful-card bg-white bg-opacity-10 p-4 rounded-lg transition-all duration-300" data-aos="fade-up">
+                    <details>
+                        <summary class="font-semibold cursor-pointer text-white">Can I customize my dashboard?</summary>
+                        <p class="text-gray-300 mt-2">Yes, you can customize your dashboard to fit your needs.</p>
+                    </details>
+                </div>
+                <div class="colorful-card bg-white bg-opacity-10 p-4 rounded-lg transition-all duration-300" data-aos="fade-up">
+                    <details>
+                        <summary class="font-semibold cursor-pointer text-white">Is my data secure?</summary>
+                        <p class="text-gray-300 mt-2">We prioritize data security and use encryption to protect your information.</p>
+                    </details>
+                </div>
+                <div class="colorful-card bg-white bg-opacity-10 p-4 rounded-lg transition-all duration-300" data-aos="fade-up">
+                    <details>
+                        <summary class="font-semibold cursor-pointer text-white">What support do you offer?</summary>
+                        <p class="text-gray-300 mt-2">We offer 24/7 customer support to assist you with any inquiries.</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Our Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-300 transition">LMS</a></li>
+                        <li><a href="#" class="hover:text-gray-300 transition">Academy</a></li>
+                        <li><a href="#" class="hover:text-gray-300 transition">AI Interview</a></li>
+                        <li><a href="#" class="hover:text-gray-300 transition">Placement</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <p>Phone: +1-800-123-4567</p>
+                    <p>Email: support@aiplatform.com</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-300 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-gray-300 transition">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-center mt-8">Copyright © 2025 AI Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+    <script>
+        AOS.init();
+
+        // Toggle mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

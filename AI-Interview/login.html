@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login – LMS</title>
+  <link rel="icon" type="image/png" href="public/Favicon.png" />
+
+  <style>
+    :root {
+      --primary: #6e48aa;
+      --secondary: #9d50bb;
+      --accent: #4776e6;
+      --neon: #00f2fe;
+      --dark: #0f0c29;
+      --light: #f8f9ff;
+      --success: #00d2ff;
+      --warning: #f46b45;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: white;
+      /* background: linear-gradient(135deg, rgba(15, 12, 41, 0.9), rgba(48, 43, 99, 0.9)); */
+      color: var(--light);
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding-top: 40px;
+    }
+
+    /* Login-specific styles only */
+    .login-box:hover {
+      border-color: rgba(0, 242, 254, 0.5);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+    }
+
+    input:focus {
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
+      border-width: 2px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper label {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .input-wrapper input:focus + label,
+    .input-wrapper input:not(:placeholder-shown) + label {
+      top: -10px;
+      left: 12px;
+      font-size: 0.75rem;
+      color: #00f2fe;
+      background: rgba(16, 18, 37, 0.9);
+      padding: 0 4px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+   
+    .login-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Rajdhani', sans-serif;
+      color: white;
+      padding-top: 80px;
+      padding-left: 16px;
+      padding-right: 16px;
+      
+    }
+
+    @media (min-width: 768px) {
+      .login-container {
+        flex-direction: row;
+      }
+    }
+
+    .login-left-img {
+      display: none;
+      width: 50%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .login-left-img {
+        display: flex;
+      }
+    }
+
+    .login-left-img img {
+      max-width: 100%;
+      max-height: 500px;
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 1s ease-out;
+    }
+
+    .login-right {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+      .login-right {
+        width: 50%;
+      }
+    }
+
+    .login-box {
+      margin-top: 40px;
+      width: 100%;
+      max-width: 512px;
+      background: rgba(16, 18, 37, 0.9);
+      border: 1px solid rgba(110, 72, 170, 0.3);
+      border-radius: 16px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      padding: 32px;
+      text-align: center;
+      transition: all 0.3s;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .login-box h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: transparent;
+      background-clip: text;
+      background-image: linear-gradient(to right, #7e22ce, #06b6d4);
+      color:white;
+      
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (min-width: 640px) {
+      .login-box h2 {
+        font-size: 1.875rem;
+      }
+    }
+
+    .login-info-text {
+      font-size: 0.875rem;
+      text-align: center;
+      margin-bottom: 24px;
+      animation: slideInUp 0.8s ease-out;
+    }
+
+    @media (min-width: 640px) {
+      .login-info-text {
+        font-size: 1rem;
+      }
+    }
+
+    .login-info-text a {
+      color: #67e8f9;
+      text-decoration: underline;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .login-info-text a:hover {
+      color: #a5f3fc;
+    }
+
+    .flash-message {
+      font-size: 0.875rem;
+      margin-bottom: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      max-width: 100%;
+      animation: slideInUp 0.8s ease-out;
+    }
+
+    @media (min-width: 640px) {
+      .flash-message {
+        font-size: 1rem;
+      }
+    }
+
+    .flash-error {
+      color: #f87171;
+      animation: pulse 2s infinite;
+    }
+
+    .flash-success {
+      color: #4ade80;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(30, 29, 66, 0.8);
+      border: 1px solid #6b7280;
+      color: white;
+      font-size: 1.125rem;
+      transition: all 0.3s;
+      animation: slideInUp 0.9s ease-out;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #67e8f9;
+    }
+
+    @media (min-width: 640px) {
+      .form-input {
+        font-size: 1.25rem;
+      }
+    }
+
+    .form-button {
+      width: 100%;
+      padding: 16px;
+      background-image: linear-gradient(to right, #7e22ce, #06b6d4);
+      color: white;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.125rem;
+      transition: all 0.3s;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (min-width: 640px) {
+      .form-button {
+        font-size: 1.25rem;
+      }
+    }
+
+    .form-button:hover {
+      background-image: linear-gradient(to right, #9333ea, #22d3ee);
+      transform: scale(1.05);
+    }
+
+    .form-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #67e8f9;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 32px 0;
+    }
+
+    .divider-line {
+      flex-grow: 1;
+      border-top: 2px solid #6b7280;
+    }
+
+    .divider-text {
+      padding: 0 16px;
+      font-size: 0.875rem;
+      color: #d1d5db;
+    }
+
+    @media (min-width: 640px) {
+      .divider-text {
+        font-size: 1rem;
+      }
+    }
+
+    .google-button {
+      width: 100%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      background: white;
+      color: black;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.125rem;
+      transition: all 0.3s;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      animation: slideInUp 1.2s ease-out;
+    }
+
+    @media (min-width: 640px) {
+      .google-button {
+        font-size: 1.25rem;
+      }
+    }
+
+    .google-button:hover {
+      background: #f3f4f6;
+      transform: scale(1.05);
+    }
+
+    .google-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #67e8f9;
+    }
+
+    .google-logo {
+      width: 24px;
+      height: 24px;
+      margin-right: 12px;
+    }
+
+    .home-button {
+      margin-top: 32px;
+      width: 100%;
+      max-width: 512px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      background-image: linear-gradient(to right, #7e22ce, #06b6d4);
+      color: white;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.125rem;
+      transition: all 0.3s;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      animation: slideInUp 1.3s ease-out;
+    }
+
+    @media (min-width: 640px) {
+      .home-button {
+        font-size: 1.25rem;
+      }
+    }
+
+    .home-button:hover {
+      background-image: linear-gradient(to right, #9333ea, #22d3ee);
+      transform: scale(1.05);
+    }
+
+    .home-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #67e8f9;
+    }
+  </style>
+</head>
+<body>
+ 
+  <!-- <div id="navbar"></div> -->
+  {% include 'nav.html' %} 
+
+
+  <!-- Login Box -->
+  <div class="login-container">
+    <div class="login-left-img">
+      <img src="{{ url_for('static', filename='images/ai-login.png') }}" /> 
+    </div>
+
+    <div class="login-right">
+      <div class="login-box">
+        <h2>Login with Email & OTP</h2>
+
+        <div class="login-info-text">
+          Don't have an account? <a href="{{ url_for('register') }}">Register here</a>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, msg in messages %}
+              <div class="flash-message {{ 'flash-error' if category == 'error' else 'flash-success' }}">{{ msg }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('login') }}" class="login-form">
+          <div class="input-wrapper">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder=" "
+              value="{{ email|default('') }}"
+              required
+              autofocus
+              class="form-input"
+              aria-label="Email address"
+            />
+            <label for="email">Enter your email</label>
+          </div>
+
+          {% if otp_sent %}
+            <div class="input-wrapper">
+              <input
+                type="text"
+                name="otp"
+                id="otp"
+                placeholder=" "
+                maxlength="6"
+                required
+                class="form-input"
+              />
+              <label for="otp">Enter 6-digit OTP</label>
+            </div>
+            <button
+              type="submit"
+              name="action"
+              value="login"
+              class="form-button"
+            >
+              Verify OTP & Log In
+            </button>
+          {% else %}
+            <button
+              type="submit"
+              name="action"
+              value="send_otp"
+              class="form-button"
+            >
+              Send OTP
+            </button>
+          {% endif %}
+        </form>
+
+        <div class="divider">
+          <div class="divider-line"></div>
+          <span class="divider-text">OR</span>
+          <div class="divider-line"></div>
+        </div>
+
+        <a href="{{ url_for('login_with_google') }}"
+           class="google-button">
+          <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" class="google-logo">
+          Sign in with Google
+        </a>
+
+        <a href="{{ url_for('home') }}"
+           class="home-button">
+          Go to Home
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load navbar -->
+  <script>
+ 
+
+      document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("nav-menu");
+
+      toggle.addEventListener("click", () => {
+        toggle.classList.toggle("open");
+        menu.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", toggle.classList.contains("open"));
+      });
+
+      toggle.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggle.click();
+        }
+      });
+    });
+    
+  // Removed redundant fetch since nav.html is included via Jinja template
+
+
+  </script>
+</body>
+</html>
